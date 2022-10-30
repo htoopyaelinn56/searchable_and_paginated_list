@@ -53,21 +53,21 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final list = ref.watch(searchList(_controller.text));
+    final parentList = ref.watch(parentListProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Searachable list'),
+        title: const Text('Credit Card Generator'),
         actions: [
           InkWell(
             onTap: () {
-              ref.read(parentListProvider).clear();
+              ref.read(fetchServiceProvider).clearData();
               _controller.clear();
-              ref.invalidate(fetchProvider);
             },
             child: const Icon(Icons.refresh),
           ),
         ],
       ),
-      body: list.isEmpty &&
+      body: parentList.isEmpty &&
               ref.watch(fetchProvider(ref.watch(pageProvider))).isLoading &&
               _controller.text.isEmpty
           ? const Center(child: CircularProgressIndicator())
