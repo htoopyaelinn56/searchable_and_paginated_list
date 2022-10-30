@@ -7,7 +7,7 @@ class FetchService {
   FetchService(this.ref);
 
   Future<void> initialFetch() async {
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
       await fetchData();
     }
   }
@@ -18,6 +18,12 @@ class FetchService {
       ref.read(parentListProvider.notifier).addData(data);
       ref.read(pageProvider.notifier).state++;
     }
+  }
+
+  Future<void> clearData() async {
+    ref.read(parentListProvider.notifier).clearList();
+    ref.read(pageProvider.notifier).state = 1;
+    await initialFetch();
   }
 }
 

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final fetchProvider =
-    FutureProvider.family<List<String>, int>((ref, page) async {
+    FutureProvider.family.autoDispose<List<String>, int>((ref, page) async {
   await Future.delayed(const Duration(seconds: 1));
   return [for (int i = 0; i < 30; i++) generateRandomString(28)];
 });
