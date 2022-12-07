@@ -10,6 +10,6 @@ final fetchProvider =
 String generateRandomString(int len) {
   var r = Random();
   const _chars =
-      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890s';
   return List.generate(len, (index) => _chars[r.nextInt(_chars.length)]).join();
 }
